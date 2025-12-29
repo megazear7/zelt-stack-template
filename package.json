@@ -1,0 +1,27 @@
+{
+  "name": "zelt-stack-template",
+  "version": "1.0.0",
+  "description": "A project template for the Zelt stack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/megazear7/zelt-stack-template.git"
+  },
+  "keywords": [
+    "Zod",
+    "Express",
+    "Lit",
+    "TypeScript",
+    "Project",
+    "Template"
+  ],
+  "author": "Alex Lockhart",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/megazear7/zelt-stack-template/issues"
+  },
+  "homepage": "https://github.com/megazear7/zelt-stack-template#readme"
+}

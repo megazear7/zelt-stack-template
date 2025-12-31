@@ -39,6 +39,5 @@ const walkDir = async (dir) => {
 walkDir(path.join(process.cwd(), "src"));
 replaceInFile(path.join(process.cwd(), "package.json"));
 await fs.rm("README.md");
-await fs.mv("README-template.md", "README.md");
-fs.rmSync("rename.js");
+await fs.rename("README-template.md", "README.md");
 console.log(`Renamed project to ${projectName} successfully.`);

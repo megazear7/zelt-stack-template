@@ -11,6 +11,8 @@ initialization as well as built in AI model support.
 git clone --depth=1 git@github.com:megazear7/zelt-stack-template.git my-cool-project
 cd my-cool-project
 node rename.js my-cool-project
+git init
+git commit -m "Init commit from the zelt template after project rename"
 nvm use 22
 npm install
 npm start

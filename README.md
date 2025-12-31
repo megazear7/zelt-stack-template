@@ -8,7 +8,7 @@ initialization as well as built in AI model support.
 ## Setup
 
 ```sh
-git clone --depth=1 git@github.com:megazear7/zelt-template.git my-cool-project
+git clone --depth=1 git@github.com:megazear7/zelt-stack-template.git my-cool-project
 cd my-cool-project
 node rename.js my-cool-project
 nvm use 22

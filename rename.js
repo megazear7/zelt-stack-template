@@ -11,7 +11,6 @@ const capitalizedNameWithSpaces = projectName
   .split('-')
   .map(word => word.charAt(0).toUpperCase() + word.slice(1))
   .join(' ');
-const nameWithSpaces = capitalizedNameWithSpaces;
 const camelCaseName = projectName.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
 const pascalCaseName = camelCaseName.charAt(0).toUpperCase() + camelCaseName.slice(1);
 

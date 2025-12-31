@@ -2,6 +2,7 @@
   "name": "zelt-template",
   "version": "1.0.0",
   "description": "A project template for the ZeltTemplate stack",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "init": "node ./dist/cli/index.cjs init",

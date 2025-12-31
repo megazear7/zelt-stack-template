@@ -25,9 +25,10 @@ const replaceInFile = async (filePath) => {
 };
 
 const walkDir = async (dir) => {
-  fs.readdirSync(dir).forEach((file) => {
+  const files = await fs.readdir(dir);
+  files.forEach(async (file) => {
     const fullPath = path.join(dir, file);
-    if (fs.lstatSync(fullPath).isDirectory()) {
+    if ((await fs.lstat(fullPath)).isDirectory()) {
       walkDir(fullPath);
     } else {
       replaceInFile(fullPath);

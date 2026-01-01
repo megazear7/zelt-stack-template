@@ -144,10 +144,12 @@ export class ZeltTemplateApp extends LitElement {
 
   protected override update(changedProperties: PropertyValues): void {
     super.update(changedProperties);
-    const tagName = `zelt-template-${this.currentRoute!.name.replace(/_/g, "-")}-page`;
-    const pageElement = this.shadowRoot?.querySelector(tagName);
-    const provider = pageElement as ZeltTemplateAbstractProvider;
-    provider.load().then(() => provider.requestUpdate());
+    if (this.currentRoute != null && changedProperties.has("currentRoute")) {
+      const tagName = `zelt-template-${this.currentRoute.name.replace(/_/g, "-")}-page`;
+      const pageElement = this.shadowRoot?.querySelector(tagName);
+      const provider = pageElement as ZeltTemplateAbstractProvider;
+      provider.load().then(() => provider.requestUpdate());
+    }
   }
 
   private handleToastClose(): void {

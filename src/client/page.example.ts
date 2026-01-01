@@ -12,7 +12,9 @@ export class ZeltTemplateExamplePage extends ZeltTemplateAppProvider {
 
   override render(): TemplateResult {
     return html`
-      <h1>Hello from the Example Page: ${this.params.id}</h1>
+      <main>
+        <h1>Hello from the Example Page: ${this.params.id}</h1>
+      </main>
     `;
   }
 }

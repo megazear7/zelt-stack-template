@@ -29,7 +29,12 @@ export class ZeltTemplateHomePage extends ZeltTemplateAppProvider {
 
   override render(): TemplateResult {
     return html`
-      <h1>Welcome to the Zelt Stack Template!</h1>
+      <main>
+        <h1>Welcome to the Zelt Stack Template!</h1>
+        <img src="/logo/logo-512x512.png" alt="Zelt Stack Logo" width="200" />
+        <p>This is a template project to help you get started with Zelt Stack.</p>
+        <a href="/example/123" class="example-link">Go to Example Page</a>
+      </main>
     `;
   }
 }

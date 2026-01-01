@@ -25,4 +25,9 @@ export const globalStyles = css`
   a:hover {
     color: var(--color-1);
   }
+
+  main {
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
 `;

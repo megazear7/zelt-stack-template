@@ -8,7 +8,9 @@ export class ZeltTemplateNotFoundPage extends LitElement {
 
   override render(): TemplateResult {
     return html`
-      <h1>Not Found!</h1>
+      <main>
+        <h1>Not Found!</h1>
+      </main>
     `;
   }
 }

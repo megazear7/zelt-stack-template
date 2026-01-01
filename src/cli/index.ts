@@ -1,4 +1,4 @@
-import { Command } from "commander";
+import { Command, Option } from "commander";
 import { standardAppConfig } from "./util.standard-app-config.js";
 import { defaults } from "./util.defaults.js";
 import { ask, closeAsk } from "./util.ask.js";
@@ -11,62 +11,72 @@ const program = new Command();
 program
   .command("init")
   .description("Initialize the ZeltTemplate app")
+  .addOption(new Option("-y, --yes", "Skip all prompts and use default configuration values"))
   .action(async () => {
     console.log("Initializing the ZeltTemplate app...");
     console.log("\nAll models must be compatible with the OpenAI API schema.");
     const appConfig = { ...standardAppConfig };
     console.log(`The following models have provided default configurations:\n${Object.keys(defaults).join(", ")}`);
-    appConfig.model.text.name = await ask("\nModel name?", defaults.grok.name);
+    appConfig.model.text.name = await ask(program, "\nModel name?", defaults.grok.name);
     appConfig.model.text.modelName = await ask(
+      program,
       "Model identifier?",
       defaults[appConfig.model.text.name as ModelTypeOption]?.modelName,
     );
     appConfig.model.text.endpoint = await ask(
+      program,
       "Model endpoint?",
       defaults[appConfig.model.text.name as ModelTypeOption]?.endpoint,
     );
-    const textApiKey = await ask("Text model API key?");
+    const textApiKey = await ask(program, "Text model API key?");
     appConfig.model.text.cost.inputTokenCost = Number(
       await ask(
+        program,
         "Input token cost (dollars per 1M tokens)?",
         String(defaults[appConfig.model.text.name as ModelTypeOption]?.cost.inputTokenCost || 0),
       ),
     );
     appConfig.model.text.cost.outputTokenCost = Number(
       await ask(
+        program,
         "Output token cost (dollars per 1M tokens)?",
         String(defaults[appConfig.model.text.name as ModelTypeOption]?.cost.outputTokenCost || 0),
       ),
     );
 
     let audioApiKey = "none-provided";
-    const configureAudio = (await ask("Do you want to configure an audio model?", "yes")).toLowerCase() === "yes";
+    const configureAudio =
+      (await ask(program, "Do you want to configure an audio model?", "yes")).toLowerCase() === "yes";
     if (configureAudio) {
-      appConfig.model.audio.name = await ask("Model name?", defaults.openai.name);
+      appConfig.model.audio.name = await ask(program, "Model name?", defaults.openai.name);
       appConfig.model.audio.modelName = await ask(
+        program,
         "Model identifier?",
         defaults[appConfig.model.audio.name as ModelTypeOption]?.modelName,
       );
       appConfig.model.audio.endpoint = await ask(
+        program,
         "Model endpoint?",
         defaults[appConfig.model.audio.name as ModelTypeOption]?.endpoint,
       );
-      audioApiKey = await ask("Audio model API key?");
+      audioApiKey = await ask(program, "Audio model API key?");
       appConfig.model.audio.cost.inputTokenCost = Number(
         await ask(
+          program,
           "Input token cost (dollars per 1M tokens)?",
           String(defaults[appConfig.model.audio.name as ModelTypeOption]?.cost.inputTokenCost || 0),
         ),
       );
       appConfig.model.audio.cost.outputTokenCost = Number(
         await ask(
+          program,
           "Output token cost (dollars per 1M tokens)?",
           String(defaults[appConfig.model.audio.name as ModelTypeOption]?.cost.outputTokenCost || 0),
         ),
       );
     }
 
-    const port = await ask("Port to run the app on?", "3000");
+    const port = await ask(program, "Port to run the app on?", "3000");
 
     await fs.mkdir("data/app", { recursive: true });
     await fs.writeFile(".env", createEnvFile(appConfig, port, textApiKey, audioApiKey));

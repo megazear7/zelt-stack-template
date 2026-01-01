@@ -1,3 +1,4 @@
+import { Command } from "commander";
 import readline from "readline";
 
 const rl = readline.createInterface({
@@ -5,7 +6,11 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-export async function ask(question: string, defaultAnswer?: string): Promise<string> {
+export async function ask(program: Command, question: string, defaultAnswer?: string): Promise<string> {
+  const yes = program.opts().yes;
+  if (yes) {
+    return defaultAnswer || "";
+  }
   return new Promise((resolve) => {
     rl.question(question + (defaultAnswer ? ` (default: ${defaultAnswer})` : "") + ": ", (answer) => {
       resolve(answer || defaultAnswer || "");

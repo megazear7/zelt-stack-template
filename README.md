@@ -16,6 +16,8 @@ git add .
 git commit -m "Init commit from the zelt template after project rename"
 nvm use 22
 npm install
+npm run build:cli
+npm run init
 npm start
 ```
 

@@ -68,6 +68,7 @@ program
 
     const port = await ask("Port to run the app on?", "3000");
 
+    await fs.mkdir("data/app", { recursive: true });
     await fs.writeFile(".env", createEnvFile(appConfig, port, textApiKey, audioApiKey));
     await fs.writeFile("data/app/index.json", JSON.stringify(appConfig, null, 2));
     console.log("Initialization complete.");

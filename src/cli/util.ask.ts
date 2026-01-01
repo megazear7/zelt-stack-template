@@ -1,4 +1,3 @@
-import { Command } from "commander";
 import readline from "readline";
 
 const rl = readline.createInterface({
@@ -6,9 +5,8 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-export async function ask(program: Command, question: string, defaultAnswer?: string): Promise<string> {
-  const yes = program.opts().yes;
-  if (yes) {
+export async function ask(skipPrompts: boolean, question: string, defaultAnswer?: string): Promise<string> {
+  if (skipPrompts) {
     return defaultAnswer || "";
   }
   return new Promise((resolve) => {

@@ -12,12 +12,12 @@ git clone --depth=1 git@github.com:megazear7/zelt-stack-template.git my-cool-pro
 cd my-cool-project
 node rename.js my-cool-project
 git init
-git add .
-git commit -m "Init commit from the zelt template after project rename"
 nvm use 22
 npm install
 npm run build:cli
 npm run init
+git add .
+git commit -m "Init commit from the zelt template after project rename"
 npm start
 ```
 

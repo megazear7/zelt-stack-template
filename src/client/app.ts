@@ -131,7 +131,13 @@ export class ZeltTemplateApp extends LitElement {
       }
     }
 
-    if (target && target.href && !target.hasAttribute("download")) {
+    if (
+      target &&
+      target.href &&
+      !target.hasAttribute("download") &&
+      target.target !== "_blank" &&
+      target.origin === window.location.origin
+    ) {
       event.preventDefault();
       sessionStorage.setItem("previousUrl", "");
       const url = new URL(target.href);

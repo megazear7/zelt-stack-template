@@ -20,6 +20,9 @@ export const globalStyles = css`
   a {
     color: var(--color-2);
     text-decoration: none;
+    transition: var(--transition-all);
+    display: inline-flex;
+    align-items: center;
   }
 
   a:hover {
@@ -28,6 +31,6 @@ export const globalStyles = css`
 
   main {
     max-width: var(--content-width);
-    margin: 0 auto;
+    margin: var(--size-large) auto;
   }
 `;
